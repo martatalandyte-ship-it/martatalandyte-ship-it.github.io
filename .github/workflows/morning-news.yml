@@ -1,0 +1,67 @@
+name: Martos rytinė apžvalga
+
+on:
+  schedule:
+    # GitHub cron is UTC. Lithuania is UTC+3 (summer) / UTC+2 (winter),
+    # so 07:00 Vilnius = 04:00 UTC (summer) or 05:00 UTC (winter).
+    # We trigger at both; a guard step runs the job only when it is
+    # actually 07:xx in Vilnius, so it fires exactly once per day.
+    - cron: "0 4 * * *"
+    - cron: "0 5 * * *"
+  workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: morning-news
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check it is 07:xx in Vilnius (skip otherwise, unless manual)
+        id: gate
+        run: |
+          HOUR=$(TZ="Europe/Vilnius" date +%H)
+          echo "Vilnius hour: $HOUR"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$HOUR" = "07" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            echo "Not 07:00 Vilnius — skipping this trigger."
+          fi
+
+      - name: Checkout
+        if: steps.gate.outputs.go == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        if: steps.gate.outputs.go == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        if: steps.gate.outputs.go == 'true'
+        run: pip install "anthropic>=0.40"
+
+      - name: Generate today's page
+        if: steps.gate.outputs.go == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/generate_news.py
+
+      - name: Commit and push
+        if: steps.gate.outputs.go == 'true'
+        run: |
+          git config user.name "Morning News Bot"
+          git config user.email "news@users.noreply.github.com"
+          if git diff --quiet -- index.html; then
+            echo "No changes to index.html."
+          else
+            git add index.html
+            git commit -m "Naujienos $(TZ='Europe/Vilnius' date +%Y-%m-%d)"
+            git push
+          fi
