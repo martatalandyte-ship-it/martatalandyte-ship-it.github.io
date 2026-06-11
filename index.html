@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martos rytinė apžvalga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff5f7;
+    --bg-card:#fffafb;
+    --rose:#d6688a;
+    --rose-deep:#b14a6e;
+    --rose-soft:#f7d6e0;
+    --blush:#fce4ec;
+    --gold:#c79a5b;
+    --ink:#3d2b33;
+    --ink-soft:#7a5e69;
+    --line:#f0cdd9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1200px 600px at 50% -200px, #ffe3ec 0%, rgba(255,227,236,0) 70%),
+      var(--bg);
+    color:var(--ink);
+    font-family:"Nunito Sans",system-ui,sans-serif;
+    line-height:1.7;
+    font-size:18px;
+  }
+  .wrap{max-width:740px;margin:0 auto;padding:0 22px 80px;}
+
+  /* Masthead */
+  header.mast{text-align:center;padding:54px 0 26px;}
+  .kicker{
+    font-family:"Nunito Sans",sans-serif;
+    letter-spacing:.32em;text-transform:uppercase;
+    font-size:12px;font-weight:700;color:var(--rose);
+    margin-bottom:14px;
+  }
+  h1.title{
+    font-family:"Fraunces",serif;
+    font-weight:600;font-size:46px;line-height:1.05;
+    margin:0 0 14px;color:var(--rose-deep);
+    letter-spacing:-.01em;
+  }
+  .meta{
+    font-size:14px;color:var(--ink-soft);
+    display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;
+  }
+  .meta .dot{color:var(--rose-soft);}
+  .rule{
+    height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);
+    margin:30px 0;
+  }
+
+  /* Intro */
+  .intro{
+    font-family:"Fraunces",serif;
+    font-size:20px;line-height:1.6;color:var(--ink);
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:26px 28px;
+    box-shadow:0 12px 30px -22px rgba(177,74,110,.5);
+  }
+  .intro b{color:var(--rose-deep);font-weight:600;}
+
+  /* Section heads */
+  h2.sec{
+    font-family:"Fraunces",serif;
+    font-size:15px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.18em;
+    color:var(--rose-deep);
+    display:flex;align-items:center;gap:14px;
+    margin:48px 0 22px;
+  }
+  h2.sec::before{content:"❀";color:var(--rose);font-size:16px;}
+  h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
+
+  /* Articles */
+  article{margin:0 0 30px;}
+  h3.head{
+    font-family:"Fraunces",serif;
+    font-size:25px;font-weight:600;line-height:1.22;
+    margin:0 0 6px;color:var(--ink);
+  }
+  .dek{font-style:italic;color:var(--rose-deep);font-size:16px;margin:0 0 12px;font-family:"Fraunces",serif;}
+  p{margin:0 0 14px;}
+
+  /* Why it matters callout */
+  .why{
+    background:linear-gradient(180deg,var(--blush),#fff5f8);
+    border-left:4px solid var(--rose);
+    border-radius:0 14px 14px 0;
+    padding:14px 20px;margin:14px 0 4px;
+    font-size:16px;
+  }
+  .why .lab{
+    display:block;font-weight:700;color:var(--rose-deep);
+    text-transform:uppercase;letter-spacing:.12em;font-size:12px;margin-bottom:4px;
+  }
+
+  /* Bulleted (Europe) */
+  ul.cards{list-style:none;padding:0;margin:0;}
+  ul.cards li{
+    background:var(--bg-card);border:1px solid var(--line);
+    border-radius:14px;padding:14px 18px;margin-bottom:12px;
+  }
+  ul.cards li b{color:var(--rose-deep);}
+
+  /* Markets numbers strip */
+  .nums{display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 22px;}
+  .num{
+    flex:1 1 150px;background:var(--bg-card);border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;text-align:center;
+  }
+  .num .v{font-family:"Fraunces",serif;font-size:24px;font-weight:600;color:var(--rose-deep);}
+  .num .l{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+
+  /* Watch list */
+  .watch li{margin-bottom:8px;}
+
+  footer{
+    margin-top:56px;text-align:center;font-size:13px;color:var(--ink-soft);
+    border-top:1px solid var(--line);padding-top:24px;
+  }
+  footer .src{font-size:12.5px;line-height:1.6;}
+  a{color:var(--rose-deep);}
+  @media(max-width:560px){
+    h1.title{font-size:34px;}
+    body{font-size:17px;}
+    .intro{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mast">
+    <div class="kicker">Martos rytinė apžvalga</div>
+    <h1 class="title">Labas rytas, Marta</h1>
+    <div class="meta">
+      <span>ketvirtadienis, 2026 m. birželio 11 d.</span>
+      <span class="dot">·</span>
+      <span>~9 min skaitymo</span>
+    </div>
+  </header>
+
+  <div class="intro">
+    Pasaulis vakar gyveno karo ir derybų ritmu: JAV užbaigė naują smūgių prieš Iraną bangą po to, kai prie Hormūzo sąsiaurio buvo numuštas amerikiečių <b>„Apache"</b> sraigtasparnis, o trapios paliaubos vėl ėmė trūkinėti. Briuselyje įvyko <b>ES–Pietų Korėjos</b> viršūnių susitikimas su nauju skaitmeninės prekybos susitarimu, o Lietuvoje pasigirdo kalbos apie galimą amerikietiško branduolinio ginklo dislokavimą. Rinkose – pirmą kartą per trejus metus virš 4 proc. šoktelėjusi JAV infliacija ir virš 100 dolerių laikoma nafta. Štai kas svarbiausia.
+  </div>
+
+  <!-- WORLD -->
+  <h2 class="sec">Pasaulio antraštės</h2>
+
+  <article>
+    <h3 class="head">JAV vėl smogė Iranui — paliaubos trūkinėja</h3>
+    <p class="dek">Numuštas „Apache" sraigtasparnis įžiebė naują smūgių bangą.</p>
+    <p>JAV kariuomenė užbaigė naują smūgių prieš Iraną etapą, atsakydama į netoli Hormūzo sąsiaurio numuštą amerikiečių „Apache" sraigtasparnį. Prezidentas Donaldas Trumpas socialiniame tinkle pareiškė, kad Teheranas per ilgai delsė dėl ugnies nutraukimo susitarimo ir dabar „sumokės kainą". Irano valstybinė žiniasklaida pranešė, kad po dviejų vandens rezervuarų pažeidimo geriamojo vandens neteko apie 20 000 gyventojų.</p>
+    <div class="why">
+      <span class="lab">Kodėl tai svarbu</span>
+      Hormūzo sąsiauriu plukdoma penktadalis pasaulio naftos. Bet kokia eskalacija akimirksniu pakelia energijos kainas ir infliaciją Europoje — todėl rinkos reaguoja į kiekvieną pareiškimą.
+    </div>
+  </article>
+
+  <article>
+    <h3 class="head">Taivanas pirmą kartą paleido HIMARS link sąsiaurio</h3>
+    <p>Per karines pratybas Taivane iš JAV tiekiamos „HIMARS" raketų sistemos pirmą kartą buvo paleista raketa link Taivano sąsiaurio — simbolinis žingsnis, demonstruojantis salos atgrasymo pajėgumus įtemptu metu.</p>
+  </article>
+
+  <article>
+    <h3 class="head">Neramumai Belfaste po peilio atakos</h3>
+    <p>Jungtinės Karalystės politikai ragino išlaikyti ramybę po to, kai suėmus iš Sudano kilusį vyrą, įtariamą žiauriu peilio išpuoliu Belfaste, prasidėjo įtempti antiimigraciniai protestai. Įvykiai dar kartą atskleidė įtampą dėl migracijos Vakarų Europoje.</p>
+  </article>
+
+  <article>
+    <h3 class="head">Prasideda 2026 m. pasaulio futbolo čempionatas</h3>
+    <p>JAV, Meksikoje ir Kanadoje prasidedant pasaulio čempionatui, dėmesį patraukė ir incidentas: teisėjas iš Somalio Omaras Artanas buvo neįleistas į JAV likus kelioms dienoms iki turnyro — jis būtų tapęs pirmuoju Somalio atstovu, teisėjaujančiu pasaulio čempionate.</p>
+  </article>
+
+  <!-- LITHUANIA -->
+  <h2 class="sec">Lietuvos rubrika</h2>
+
+  <article>
+    <h3 class="head">Derybos su JAV dėl branduolinio ginklo Lietuvoje</h3>
+    <p class="dek">Krašto apsaugos ministras patvirtino jautrias konsultacijas.</p>
+    <p>Lietuvos krašto apsaugos ministras patvirtino, kad šalis veda derybas su JAV dėl galimo amerikietiško branduolinio ginklo dislokavimo Lietuvos teritorijoje. Tema itin jautri saugumo požiūriu ir žymi platesnę diskusiją apie atgrasymą rytiniame NATO flange.</p>
+    <div class="why">
+      <span class="lab">Kodėl tai svarbu</span>
+      Su Rusija besiribojanti Lietuva pastaraisiais metais smarkiai didino gynybos išlaidas. Bet kokie pokyčiai dėl branduolinio atgrasymo keistų visos Baltijos saugumo skaičiavimus ir santykius su Maskva.
+    </div>
+  </article>
+
+  <article>
+    <h3 class="head">Kariuomenės vadas: gynybai reikia 10 proc. BVP</h3>
+    <p>Lietuvos kariuomenės vadas pareiškė, kad „geriausiems rezultatams" gynybos srityje šalis turėtų skirti iki 10 proc. bendrojo vidaus produkto — gerokai daugiau nei dabartiniai įsipareigojimai ir vienas ambicingiausių tikslų NATO.</p>
+  </article>
+
+  <!-- EUROPE / EU -->
+  <h2 class="sec">Europa ir ES</h2>
+
+  <article>
+    <h3 class="head">ES ir Pietų Korėja sustiprino partnerystę</h3>
+    <p>Briuselyje įvyko 11-asis ES–Pietų Korėjos viršūnių susitikimas, kuriame ES atstovavo Europos Vadovų Tarybos pirmininkas António Costa ir Komisijos pirmininkė Ursula von der Leyen. Pasirašytas naujas skaitmeninės prekybos susitarimas, sutarta pradėti derybas dėl įslaptintos informacijos mainų ir įsteigti ES–Korėjos konkurencingumo partnerystę.</p>
+  </article>
+
+  <ul class="cards">
+    <li><b>Plėtra.</b> ES paskelbė atverianti pirmąjį derybų skyrių su Ukraina ir Moldova; kartu pristatytas 21-asis sankcijų Rusijai paketas.</li>
+    <li><b>Salos ir pakrantės.</b> Europos Komisija pristatė pirmąsias istorijoje atskiras strategijas ES saloms ir pakrančių bendruomenėms remti.</li>
+    <li><b>Inovacijos.</b> Pradėjo veikti nauja ES inovacijų platforma, jungianti startuolius su finansavimo galimybėmis ir paslaugomis.</li>
+    <li><b>Aukų teisės.</b> Atnaujintas ES įstatymas leis lengviau pranešti apie nusikaltimą internetu; veikia ES masto pagalbos linija 116 006.</li>
+  </ul>
+
+  <!-- MARKETS -->
+  <h2 class="sec">Rinkos ir ekonomika</h2>
+
+  <div class="nums">
+    <div class="num"><div class="v">4,2 %</div><div class="l">JAV infliacija</div></div>
+    <div class="num"><div class="v">&gt;100 $</div><div class="l">Brent nafta</div></div>
+    <div class="num"><div class="v">3,50–3,75 %</div><div class="l">Fed palūkanos</div></div>
+  </div>
+
+  <article>
+    <h3 class="head">Infliacija pirmą kartą per trejus metus virš 4 proc.</h3>
+    <p>Gegužės vartotojų kainų indeksas (CPI) ūgtelėjo 0,5 proc. per mėnesį, o metinė infliacija pasiekė 4,2 proc. — daugiausia dėl energijos kainų, kurios per mėnesį šoktelėjo 3,9 proc. ir sudarė per 60 proc. viso kainų augimo. Benzinas per metus pabrango 40,5 proc. Bazinė infliacija (be energijos ir maisto) augo santūriau — 0,2 proc.</p>
+  </article>
+
+  <article>
+    <h3 class="head">Nafta laikosi virš 100 dolerių</h3>
+    <p>„Brent" žalia nafta išliko virš 100 dolerių už barelį ir kilo atnaujinus abipusius karinius smūgius, kurie kelia grėsmę trapioms paliauboms. Nuo karo Irane pradžios vasario pabaigoje kaina pakilusi daugiau nei 35 proc., nors atsitraukė nuo balandžio piko ties ~113 doleriais.</p>
+  </article>
+
+  <article>
+    <h3 class="head">Fed greičiausiai laikys palūkanas vietoje</h3>
+    <p>Federalinio rezervo tikslinė palūkanų norma yra 3,50–3,75 proc., o ateities sandorių rinka rodo 98,2 proc. tikimybę, kad kitos savaitės posėdyje (birželio 16–17 d.) palūkanos liks nepakeistos. Investuotojai atidžiai stebi, kaip kelią į priekį formuluos naujasis Fed pirmininkas Kevinas Warshas. „S&P 500" antradienį krito, bet atsigavo nuo dienos dugno.</p>
+  </article>
+
+  <!-- TRADING -->
+  <h2 class="sec">Prekybai svarbu žinoti</h2>
+
+  <article>
+    <ul class="cards watch">
+      <li><b>FOMC, birželio 16–17 d.</b> Pareiškimas ir spaudos konferencija birželio 17 d. — pagrindinis savaitės įvykis rinkoms. Tikimasi, kad palūkanos liks nepakeistos.</li>
+      <li><b>Mičigano vartotojų pasitikėjimo indeksas (birželio 11 d.).</b> Infliacija lieka pagrindiniu vartotojų rūpesčiu; duomenys gali pajudinti dolerį.</li>
+      <li><b>Nafta ir Hormūzas.</b> Kiekviena žinia iš Irano juda kainas. Eskalacija = aukštesnė nafta, infliacija ir spaudimas akcijoms; deeskalacija = atvirkščiai.</li>
+      <li><b>Energija kursto infliaciją.</b> Kol nafta virš 100 dolerių, Fed turi mažiau erdvės mažinti palūkanas — tai laiko dolerį stiprų, o obligacijų pajamingumą aukštą.</li>
+    </ul>
+  </article>
+
+  <!-- TODAY -->
+  <h2 class="sec">Šiandien stebime</h2>
+  <article>
+    <p>Tęsiasi 2026 m. pasaulio futbolo čempionatas. Rinkos sveria gegužės infliacijos duomenis prieš kitos savaitės Fed posėdį, o visų akys nukreiptos į Irano ir JAV konfliktą bei Hormūzo sąsiaurio situaciją.</p>
+  </article>
+
+  <footer>
+    <p class="src"><b>Šaltiniai:</b> LRT, Reuters, AP, NPR, Democracy Now!, Euronews, Consilium (ES Taryba), European Commission, EEAS, Schwab, Fortune, Vanguard, Kiplinger, Trading Economics.</p>
+    <p>Parengta automatiškai · „Martos rytinė apžvalga" · 2026 m. birželio 11 d.<br>
+    Naujienos apibendrina birželio 10 d. įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p>
+  </footer>
+
+</div>
+</body>
+</html>
