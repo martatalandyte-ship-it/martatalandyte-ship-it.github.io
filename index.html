@@ -32,11 +32,8 @@
     font-size:18px;
   }
   .wrap{max-width:740px;margin:0 auto;padding:0 22px 80px;}
-
-  /* Masthead */
   header.mast{text-align:center;padding:54px 0 26px;}
   .kicker{
-    font-family:"Nunito Sans",sans-serif;
     letter-spacing:.32em;text-transform:uppercase;
     font-size:12px;font-weight:700;color:var(--rose);
     margin-bottom:14px;
@@ -52,12 +49,6 @@
     display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;
   }
   .meta .dot{color:var(--rose-soft);}
-  .rule{
-    height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);
-    margin:30px 0;
-  }
-
-  /* Intro */
   .intro{
     font-family:"Fraunces",serif;
     font-size:20px;line-height:1.6;color:var(--ink);
@@ -68,8 +59,6 @@
     box-shadow:0 12px 30px -22px rgba(177,74,110,.5);
   }
   .intro b{color:var(--rose-deep);font-weight:600;}
-
-  /* Section heads */
   h2.sec{
     font-family:"Fraunces",serif;
     font-size:15px;font-weight:700;
@@ -80,8 +69,6 @@
   }
   h2.sec::before{content:"❀";color:var(--rose);font-size:16px;}
   h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
-
-  /* Articles */
   article{margin:0 0 30px;}
   h3.head{
     font-family:"Fraunces",serif;
@@ -90,8 +77,6 @@
   }
   .dek{font-style:italic;color:var(--rose-deep);font-size:16px;margin:0 0 12px;font-family:"Fraunces",serif;}
   p{margin:0 0 14px;}
-
-  /* Why it matters callout */
   .why{
     background:linear-gradient(180deg,var(--blush),#fff5f8);
     border-left:4px solid var(--rose);
@@ -103,16 +88,12 @@
     display:block;font-weight:700;color:var(--rose-deep);
     text-transform:uppercase;letter-spacing:.12em;font-size:12px;margin-bottom:4px;
   }
-
-  /* Bulleted (Europe) */
   ul.cards{list-style:none;padding:0;margin:0;}
   ul.cards li{
     background:var(--bg-card);border:1px solid var(--line);
     border-radius:14px;padding:14px 18px;margin-bottom:12px;
   }
   ul.cards li b{color:var(--rose-deep);}
-
-  /* Markets numbers strip */
   .nums{display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 22px;}
   .num{
     flex:1 1 150px;background:var(--bg-card);border:1px solid var(--line);
@@ -120,10 +101,7 @@
   }
   .num .v{font-family:"Fraunces",serif;font-size:24px;font-weight:600;color:var(--rose-deep);}
   .num .l{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
-
-  /* Watch list */
   .watch li{margin-bottom:8px;}
-
   footer{
     margin-top:56px;text-align:center;font-size:13px;color:var(--ink-soft);
     border-top:1px solid var(--line);padding-top:24px;
@@ -144,99 +122,98 @@
     <div class="kicker">Martos rytinė apžvalga</div>
     <h1 class="title">Labas rytas, Marta</h1>
     <div class="meta">
-      <span>ketvirtadienis, 2026 m. birželio 11 d.</span>
+      <span>penktadienis, 2026 m. birželio 12 d.</span>
       <span class="dot">·</span>
-      <span>~9 min skaitymo</span>
+      <span>~8 min skaitymo</span>
     </div>
   </header>
 
   <div class="intro">
-    Pasaulis vakar gyveno karo ir derybų ritmu: JAV užbaigė naują smūgių prieš Iraną bangą po to, kai prie Hormūzo sąsiaurio buvo numuštas amerikiečių <b>„Apache"</b> sraigtasparnis, o trapios paliaubos vėl ėmė trūkinėti. Briuselyje įvyko <b>ES–Pietų Korėjos</b> viršūnių susitikimas su nauju skaitmeninės prekybos susitarimu, o Lietuvoje pasigirdo kalbos apie galimą amerikietiško branduolinio ginklo dislokavimą. Rinkose – pirmą kartą per trejus metus virš 4 proc. šoktelėjusi JAV infliacija ir virš 100 dolerių laikoma nafta. Štai kas svarbiausia.
+    Po savaičių įtampos — staigus posūkis. Prezidentas Donaldas Trumpas atšaukė trečiąją smūgių prieš Iraną naktį ir paskelbė esą pasiektas <b>karo pabaigos susitarimas</b>, kurį tikisi pasirašyti per savaitgalį. Rinkos sureagavo audringai: <b>nafta krito, akcijos šovė aukštyn</b> visame pasaulyje — nuo Volstryto iki Seulo. Vis dėlto nei Iranas, nei Izraelis dar nepatvirtino susitarimo. Lietuvoje prezidentas Gitanas Nausėda pasiūlė keisti Konstituciją, kad būtų galima dislokuoti branduolinį atgrasymą. Štai kas svarbiausia.
   </div>
 
   <!-- WORLD -->
   <h2 class="sec">Pasaulio antraštės</h2>
 
   <article>
-    <h3 class="head">JAV vėl smogė Iranui — paliaubos trūkinėja</h3>
-    <p class="dek">Numuštas „Apache" sraigtasparnis įžiebė naują smūgių bangą.</p>
-    <p>JAV kariuomenė užbaigė naują smūgių prieš Iraną etapą, atsakydama į netoli Hormūzo sąsiaurio numuštą amerikiečių „Apache" sraigtasparnį. Prezidentas Donaldas Trumpas socialiniame tinkle pareiškė, kad Teheranas per ilgai delsė dėl ugnies nutraukimo susitarimo ir dabar „sumokės kainą". Irano valstybinė žiniasklaida pranešė, kad po dviejų vandens rezervuarų pažeidimo geriamojo vandens neteko apie 20 000 gyventojų.</p>
+    <h3 class="head">Trumpas atšaukė smūgius Iranui ir skelbia taikos susitarimą</h3>
+    <p class="dek">Iranas ir Izraelis kol kas tyli — derybų baigtis lieka neaiški.</p>
+    <p>Prezidentas Donaldas Trumpas atšaukė trečiąją iš eilės smūgių prieš Iraną naktį, motyvuodamas pažanga taikos derybose. „Ką tik puikiai sureguliavome karą su Iranu… belieka galutinai sutvarkyti dokumentus", — žurnalistams sakė jis, leisdamas suprasti, kad susitarimas gali būti pasirašytas jau savaitgalį. Vis dėlto Iranas viešai nepatvirtino šių teiginių — Užsienio reikalų ministerijos atstovas nurodė, kad susitarimo memorandumas su JAV tik „svarstomas", o Izraelio premjeras Benjaminas Netanyahu pareiškė, kad Jeruzalė nėra šio susitarimo šalis.</p>
     <div class="why">
       <span class="lab">Kodėl tai svarbu</span>
-      Hormūzo sąsiauriu plukdoma penktadalis pasaulio naftos. Bet kokia eskalacija akimirksniu pakelia energijos kainas ir infliaciją Europoje — todėl rinkos reaguoja į kiekvieną pareiškimą.
+      Eskalacija prie Hormūzo sąsiaurio savaitėmis kėlė naftos kainas ir infliaciją. Deeskalacijos signalas akimirksniu apvertė rinkas — bet kol susitarimas nepatvirtintas abiejų pusių, rizika grįžti prie įtampos išlieka reali.
     </div>
   </article>
 
   <article>
-    <h3 class="head">Taivanas pirmą kartą paleido HIMARS link sąsiaurio</h3>
-    <p>Per karines pratybas Taivane iš JAV tiekiamos „HIMARS" raketų sistemos pirmą kartą buvo paleista raketa link Taivano sąsiaurio — simbolinis žingsnis, demonstruojantis salos atgrasymo pajėgumus įtemptu metu.</p>
+    <h3 class="head">Filipinuose auga žemės drebėjimo aukų skaičius</h3>
+    <p>Po galingo 7,8 balo žemės drebėjimo prie pietinės Mindanao salos krantų žuvusiųjų skaičius pakilo iki mažiausiai 47, dar 31 žmogus laikomas dingusiu, sužeista beveik 700. Gelbėjimo darbai tęsiasi sudėtingomis sąlygomis.</p>
   </article>
 
   <article>
-    <h3 class="head">Neramumai Belfaste po peilio atakos</h3>
-    <p>Jungtinės Karalystės politikai ragino išlaikyti ramybę po to, kai suėmus iš Sudano kilusį vyrą, įtariamą žiauriu peilio išpuoliu Belfaste, prasidėjo įtempti antiimigraciniai protestai. Įvykiai dar kartą atskleidė įtampą dėl migracijos Vakarų Europoje.</p>
+    <h3 class="head">Saudo Arabija atšaukė importo iš Libano draudimą</h3>
+    <p>Saudo Arabija paskelbė nutraukianti prieš penkerius metus įvestą Libano prekių importo draudimą — reikšmingas žingsnis atkuriant Libano ir Persijos įlankos valstybių santykius.</p>
   </article>
 
   <article>
-    <h3 class="head">Prasideda 2026 m. pasaulio futbolo čempionatas</h3>
-    <p>JAV, Meksikoje ir Kanadoje prasidedant pasaulio čempionatui, dėmesį patraukė ir incidentas: teisėjas iš Somalio Omaras Artanas buvo neįleistas į JAV likus kelioms dienoms iki turnyro — jis būtų tapęs pirmuoju Somalio atstovu, teisėjaujančiu pasaulio čempionate.</p>
+    <h3 class="head">SpaceX tapo vieša bendrove</h3>
+    <p>„SpaceX" surengė pirminį viešą akcijų siūlymą (IPO) — pirmasis iš trijų didelių, dirbtinio intelekto varomų šių metų IPO. Sandoris vėl atkreipė investuotojų dėmesį į kosmoso ir DI infrastruktūros sektorių.</p>
   </article>
 
   <!-- LITHUANIA -->
   <h2 class="sec">Lietuvos rubrika</h2>
 
   <article>
-    <h3 class="head">Derybos su JAV dėl branduolinio ginklo Lietuvoje</h3>
-    <p class="dek">Krašto apsaugos ministras patvirtino jautrias konsultacijas.</p>
-    <p>Lietuvos krašto apsaugos ministras patvirtino, kad šalis veda derybas su JAV dėl galimo amerikietiško branduolinio ginklo dislokavimo Lietuvos teritorijoje. Tema itin jautri saugumo požiūriu ir žymi platesnę diskusiją apie atgrasymą rytiniame NATO flange.</p>
+    <h3 class="head">Nausėda siūlo keisti Konstituciją dėl branduolinio atgrasymo</h3>
+    <p class="dek">Saugumo rizikos verčia svarstyti tai, kas dar neseniai buvo tabu.</p>
+    <p>Prezidentas Gitanas Nausėda, remdamasis saugumo rizikomis, pasiūlė keisti Lietuvos Konstituciją ir panaikinti masinio naikinimo ginklų dislokavimo draudimą. Tai atveria kelią diskusijai dėl branduolinio atgrasymo Lietuvos teritorijoje — temos, glaudžiai susijusios su ankstesnėmis derybomis su JAV.</p>
     <div class="why">
       <span class="lab">Kodėl tai svarbu</span>
-      Su Rusija besiribojanti Lietuva pastaraisiais metais smarkiai didino gynybos išlaidas. Bet kokie pokyčiai dėl branduolinio atgrasymo keistų visos Baltijos saugumo skaičiavimus ir santykius su Maskva.
+      Su Rusija besiribojanti Lietuva pastaraisiais metais smarkiai didino gynybos išlaidas. Konstitucijos pataisa būtų esminis žingsnis, keičiantis visos Baltijos saugumo architektūrą ir santykius su Maskva.
     </div>
   </article>
 
   <article>
-    <h3 class="head">Kariuomenės vadas: gynybai reikia 10 proc. BVP</h3>
-    <p>Lietuvos kariuomenės vadas pareiškė, kad „geriausiems rezultatams" gynybos srityje šalis turėtų skirti iki 10 proc. bendrojo vidaus produkto — gerokai daugiau nei dabartiniai įsipareigojimai ir vienas ambicingiausių tikslų NATO.</p>
+    <h3 class="head">Baltijos šalys – pirmosios siekia 5 proc. BVP gynybai</h3>
+    <p>Baltijos valstybės įsipareigojo pirmosios pasiekti ir viršyti NATO sutartą 5 proc. BVP gynybos finansavimo tikslą. Po neseniai Vilniuje vykusios NATO parlamentinės asamblėjos regiono lyderiai pabrėžia atgrasymo ir paramos Ukrainai tęstinumą.</p>
   </article>
 
   <!-- EUROPE / EU -->
   <h2 class="sec">Europa ir ES</h2>
 
   <article>
-    <h3 class="head">ES ir Pietų Korėja sustiprino partnerystę</h3>
-    <p>Briuselyje įvyko 11-asis ES–Pietų Korėjos viršūnių susitikimas, kuriame ES atstovavo Europos Vadovų Tarybos pirmininkas António Costa ir Komisijos pirmininkė Ursula von der Leyen. Pasirašytas naujas skaitmeninės prekybos susitarimas, sutarta pradėti derybas dėl įslaptintos informacijos mainų ir įsteigti ES–Korėjos konkurencingumo partnerystę.</p>
+    <h3 class="head">Albanijoje – protestai dėl Trumpų šeimos kurorto</h3>
+    <p>Albanijoje įsiplieskė protestai prieš Ivankos Trump ir Jaredo Kushnerio planus statyti prabangų kurortą saugomoje saloje. Aplinkosaugininkai ir vietos gyventojai nuogąstauja dėl poveikio unikaliai ekosistemai.</p>
   </article>
 
   <ul class="cards">
-    <li><b>Plėtra.</b> ES paskelbė atverianti pirmąjį derybų skyrių su Ukraina ir Moldova; kartu pristatytas 21-asis sankcijų Rusijai paketas.</li>
-    <li><b>Salos ir pakrantės.</b> Europos Komisija pristatė pirmąsias istorijoje atskiras strategijas ES saloms ir pakrančių bendruomenėms remti.</li>
-    <li><b>Inovacijos.</b> Pradėjo veikti nauja ES inovacijų platforma, jungianti startuolius su finansavimo galimybėmis ir paslaugomis.</li>
-    <li><b>Aukų teisės.</b> Atnaujintas ES įstatymas leis lengviau pranešti apie nusikaltimą internetu; veikia ES masto pagalbos linija 116 006.</li>
+    <li><b>Ispanija.</b> Maljorkos turistiniame Magalufo rajone kilęs gaisras pražudė du žmones, dar keli sužeisti.</li>
+    <li><b>Rinkų banga.</b> Optimizmas dėl Irano deeskalacijos persirito per Europos biržas — investuotojai sveikino krintančias naftos kainas.</li>
+    <li><b>Ukraina.</b> ES tęsia diskusijas dėl plėtros ir tolesnės paramos Ukrainai, akcentuodama spaudimą Rusijai.</li>
   </ul>
 
   <!-- MARKETS -->
   <h2 class="sec">Rinkos ir ekonomika</h2>
 
   <div class="nums">
-    <div class="num"><div class="v">4,2 %</div><div class="l">JAV infliacija</div></div>
-    <div class="num"><div class="v">&gt;100 $</div><div class="l">Brent nafta</div></div>
-    <div class="num"><div class="v">3,50–3,75 %</div><div class="l">Fed palūkanos</div></div>
+    <div class="num"><div class="v">+1,8 %</div><div class="l">S&P 500</div></div>
+    <div class="num"><div class="v">&lt;89,50 $</div><div class="l">Brent nafta</div></div>
+    <div class="num"><div class="v">+2,5 %</div><div class="l">Nasdaq</div></div>
   </div>
 
   <article>
-    <h3 class="head">Infliacija pirmą kartą per trejus metus virš 4 proc.</h3>
-    <p>Gegužės vartotojų kainų indeksas (CPI) ūgtelėjo 0,5 proc. per mėnesį, o metinė infliacija pasiekė 4,2 proc. — daugiausia dėl energijos kainų, kurios per mėnesį šoktelėjo 3,9 proc. ir sudarė per 60 proc. viso kainų augimo. Benzinas per metus pabrango 40,5 proc. Bazinė infliacija (be energijos ir maisto) augo santūriau — 0,2 proc.</p>
+    <h3 class="head">Akcijos šoko aukštyn, nafta krito</h3>
+    <p>Žinia apie atšauktus smūgius ir galimą taiką uždegė rinkas. „S&P 500" ketvirtadienį baigė beveik 1,8 proc. aukščiau, nutraukdamas tris nuostolingas sesijas iš eilės; technologijų „Nasdaq Composite" pakilo 2,5 proc., „Dow Jones" – apie 1,9 proc., arba maždaug 900 punktų.</p>
   </article>
 
   <article>
-    <h3 class="head">Nafta laikosi virš 100 dolerių</h3>
-    <p>„Brent" žalia nafta išliko virš 100 dolerių už barelį ir kilo atnaujinus abipusius karinius smūgius, kurie kelia grėsmę trapioms paliauboms. Nuo karo Irane pradžios vasario pabaigoje kaina pakilusi daugiau nei 35 proc., nors atsitraukė nuo balandžio piko ties ~113 doleriais.</p>
+    <h3 class="head">Nafta nurimo žemiau 90 dolerių</h3>
+    <p>Naftos kainos krito daugiau nei 3 proc. — „Brent" žalia nafta nusileido žemiau 89,50 dolerio už barelį, rinkoms tikintis, kad Hormūzo sąsiauryje grįš normalumas. Tai atpalaiduoja vieną pagrindinių pastarųjų savaičių infliacijos veiksnių.</p>
   </article>
 
   <article>
-    <h3 class="head">Fed greičiausiai laikys palūkanas vietoje</h3>
-    <p>Federalinio rezervo tikslinė palūkanų norma yra 3,50–3,75 proc., o ateities sandorių rinka rodo 98,2 proc. tikimybę, kad kitos savaitės posėdyje (birželio 16–17 d.) palūkanos liks nepakeistos. Investuotojai atidžiai stebi, kaip kelią į priekį formuluos naujasis Fed pirmininkas Kevinas Warshas. „S&P 500" antradienį krito, bet atsigavo nuo dienos dugno.</p>
+    <h3 class="head">Azijos biržos pratęsė ralį</h3>
+    <p>Penktadienį optimizmas persikėlė į Aziją: Pietų Korėjos „Kospi" rytinėje sesijoje šovė daugiau nei 8 proc., Japonijos „Nikkei 225" kilo iki 4 proc., augo ir Taivano, Honkongo bei Australijos rinkos.</p>
   </article>
 
   <!-- TRADING -->
@@ -244,23 +221,23 @@
 
   <article>
     <ul class="cards watch">
-      <li><b>FOMC, birželio 16–17 d.</b> Pareiškimas ir spaudos konferencija birželio 17 d. — pagrindinis savaitės įvykis rinkoms. Tikimasi, kad palūkanos liks nepakeistos.</li>
-      <li><b>Mičigano vartotojų pasitikėjimo indeksas (birželio 11 d.).</b> Infliacija lieka pagrindiniu vartotojų rūpesčiu; duomenys gali pajudinti dolerį.</li>
-      <li><b>Nafta ir Hormūzas.</b> Kiekviena žinia iš Irano juda kainas. Eskalacija = aukštesnė nafta, infliacija ir spaudimas akcijoms; deeskalacija = atvirkščiai.</li>
-      <li><b>Energija kursto infliaciją.</b> Kol nafta virš 100 dolerių, Fed turi mažiau erdvės mažinti palūkanas — tai laiko dolerį stiprų, o obligacijų pajamingumą aukštą.</li>
+      <li><b>Irano susitarimas – pagrindinė intriga.</b> Kol Iranas ir Izraelis viešai nepatvirtino taikos, ralis trapus. Patvirtinimas savaitgalį dar labiau numuštų naftą; griūtis – grąžintų riziką.</li>
+      <li><b>FOMC, birželio 16–17 d.</b> Kitos savaitės Fed posėdis – svarbiausias įvykis. Krintanti nafta mažina infliacijos spaudimą ir gali suteikti Fed daugiau erdvės.</li>
+      <li><b>Nafta ir energetika.</b> Staigus naftos kritimas keičia visą infliacijos ir palūkanų logiką — stebėkite, ar kaina įsitvirtins žemiau 90 dolerių.</li>
+      <li><b>Rizikos apetitas.</b> Technologijų ir kosmoso akcijos (po „SpaceX" IPO) traukia kapitalą; doleris ir saugaus prieglobsčio turtas atsitraukia.</li>
     </ul>
   </article>
 
   <!-- TODAY -->
   <h2 class="sec">Šiandien stebime</h2>
   <article>
-    <p>Tęsiasi 2026 m. pasaulio futbolo čempionatas. Rinkos sveria gegužės infliacijos duomenis prieš kitos savaitės Fed posėdį, o visų akys nukreiptos į Irano ir JAV konfliktą bei Hormūzo sąsiaurio situaciją.</p>
+    <p>Visų akys – į Iraną ir Izraelį: ar bus patvirtintas Trumpo skelbtas susitarimas. Rinkos sveria, ar naftos kritimas ir akcijų ralis tvarus prieš kitos savaitės Fed posėdį. Lietuvoje toliau aidi diskusija dėl Konstitucijos pataisos ir branduolinio atgrasymo.</p>
   </article>
 
   <footer>
-    <p class="src"><b>Šaltiniai:</b> LRT, Reuters, AP, NPR, Democracy Now!, Euronews, Consilium (ES Taryba), European Commission, EEAS, Schwab, Fortune, Vanguard, Kiplinger, Trading Economics.</p>
-    <p>Parengta automatiškai · „Martos rytinė apžvalga" · 2026 m. birželio 11 d.<br>
-    Naujienos apibendrina birželio 10 d. įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p>
+    <p class="src"><b>Šaltiniai:</b> Reuters, AP, Al Jazeera, CNBC, Yahoo Finance, Times of Israel, Morning Star, PBS, NPR, LRT, NATO, GlobalSecurity, Trading Economics.</p>
+    <p>Parengta automatiškai · „Martos rytinė apžvalga" · 2026 m. birželio 12 d.<br>
+    Naujienos apibendrina birželio 11 d. įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p>
   </footer>
 
 </div>
