@@ -2,10 +2,14 @@ name: Martos rytinė apžvalga
 
 on:
   schedule:
-    # GitHub cron is UTC. Lithuania is UTC+3 (summer) / UTC+2 (winter),
-    # so 07:00 Vilnius = 04:00 UTC (summer) or 05:00 UTC (winter).
-    # We trigger at both; a guard step runs the job only when it is
-    # actually 07:xx in Vilnius, so it fires exactly once per day.
+    # GitHub cron is UTC. Target publish time is 05:00 Vilnius, which is
+    # 02:00 UTC (summer, UTC+3) or 03:00 UTC (winter, UTC+2).
+    # GitHub's scheduler is best-effort and is regularly delayed by hours,
+    # so a strict "run only at exactly HH:00" guard would skip every day.
+    # Instead we trigger early/often and let the guard publish at most once
+    # per Vilnius day, on or after 05:00 local — whenever the runner fires.
+    - cron: "0 2 * * *"
+    - cron: "0 3 * * *"
     - cron: "0 4 * * *"
     - cron: "0 5 * * *"
   workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
@@ -21,21 +25,30 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Check it is 07:xx in Vilnius (skip otherwise, unless manual)
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Decide whether to publish (>=05:00 Vilnius, once per day)
         id: gate
         run: |
-          HOUR=$(TZ="Europe/Vilnius" date +%H)
-          echo "Vilnius hour: $HOUR"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$HOUR" = "07" ]; then
+          export TZ="Europe/Vilnius"
+          HOUR=$((10#$(date +%H)))
+          TODAY=$(date +%F)
+          LAST=$(git log -1 --format=%cd --date=format-local:%F -- index.html || echo "")
+          echo "Vilnius now: $(date '+%F %H:%M')  |  index.html last published: ${LAST:-never}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual run — publishing."
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          elif [ "$TODAY" = "$LAST" ]; then
+            echo "Already published today ($TODAY) — skipping."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          elif [ "$HOUR" -ge 5 ]; then
+            echo "Not yet published today and it is >=05:00 Vilnius — publishing."
             echo "go=true" >> "$GITHUB_OUTPUT"
           else
+            echo "Before 05:00 Vilnius — skipping."
             echo "go=false" >> "$GITHUB_OUTPUT"
-            echo "Not 07:00 Vilnius — skipping this trigger."
           fi
-
-      - name: Checkout
-        if: steps.gate.outputs.go == 'true'
-        uses: actions/checkout@v4
 
       - name: Set up Python
         if: steps.gate.outputs.go == 'true'
