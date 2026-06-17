@@ -2,16 +2,11 @@ name: Martos rytinė apžvalga
 
 on:
   schedule:
-    # GitHub cron is UTC. Target publish time is 07:00 Vilnius, which is
-    # 04:00 UTC (summer, UTC+3) or 05:00 UTC (winter, UTC+2).
-    # GitHub's scheduler is best-effort and is regularly delayed by hours,
-    # so a strict "run only at exactly HH:00" guard would skip every day.
-    # Instead we trigger early/often and let the guard publish at most once
-    # per Vilnius day, on or after 07:00 local — whenever the runner fires.
-    - cron: "0 4 * * *"
+    # GitHub cron is UTC. 05:00 UTC is ~07:00 Vilnius (winter, UTC+2) /
+    # ~08:00 Vilnius (summer, UTC+3). GitHub's scheduler is best-effort and
+    # may be delayed by hours, but there is no longer a gate: whenever this
+    # fires, the page is regenerated and published. One invocation per day.
     - cron: "0 5 * * *"
-    - cron: "0 6 * * *"
-    - cron: "0 7 * * *"
   workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
 
 permissions:
@@ -28,53 +23,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Decide whether to publish (>=07:00 Vilnius, once per day)
-        id: gate
-        run: |
-          export TZ="Europe/Vilnius"
-          HOUR=$((10#$(date +%H)))
-          TODAY=$(date +%F)
-          LAST=$(git log -1 --format=%cd --date=format-local:%F -- index.html || echo "")
-          echo "Vilnius now: $(date '+%F %H:%M')  |  index.html last published: ${LAST:-never}"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "Manual run — publishing."
-            echo "go=true" >> "$GITHUB_OUTPUT"
-          elif [ "$TODAY" = "$LAST" ]; then
-            echo "Already published today ($TODAY) — skipping."
-            echo "go=false" >> "$GITHUB_OUTPUT"
-          elif [ "$HOUR" -ge 7 ]; then
-            echo "Not yet published today and it is >=07:00 Vilnius — publishing."
-            echo "go=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Before 07:00 Vilnius — skipping."
-            echo "go=false" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Set up Python
-        if: steps.gate.outputs.go == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install dependencies
-        if: steps.gate.outputs.go == 'true'
         run: pip install "anthropic>=0.40"
 
       - name: Generate today's page
-        if: steps.gate.outputs.go == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/generate_news.py
 
       - name: Commit and push
-        if: steps.gate.outputs.go == 'true'
         run: |
           git config user.name "Morning News Bot"
           git config user.email "news@users.noreply.github.com"
-          if git diff --quiet -- index.html; then
-            echo "No changes to index.html."
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to index.html — nothing to publish."
           else
-            git add index.html
             git commit -m "Naujienos $(TZ='Europe/Vilnius' date +%Y-%m-%d)"
             git push
           fi
