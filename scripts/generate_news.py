@@ -2,9 +2,14 @@
 """
 Martos rytinė apžvalga — daily Lithuanian morning news generator.
 Runs in GitHub Actions. Calls the Anthropic API (with the server-side web
-search tool) to research yesterday's news and produce a self-contained
-index.html in the fixed soft pink & rose design. Writes index.html to the
-repo root so the workflow can commit it.
+search tool) to research YESTERDAY's news and produce a self-contained
+index.html in the fixed soft pink & rose design, dated TODAY (so it reads
+like this morning's paper) with a clear "covers yesterday" line.
+
+Idempotent: the page carries an HTML marker <!-- edition:YYYY-MM-DD --> with
+today's Vilnius date. If index.html already has today's marker, the script
+exits without calling the API, so multiple early-morning cron triggers are
+safe and cheap (only the first one each day actually generates).
 
 Requires env var ANTHROPIC_API_KEY.
 """
@@ -19,14 +24,11 @@ import anthropic
 MODEL = "claude-sonnet-4-6"
 
 # --- Dates in Vilnius local time ---------------------------------------------
-# GitHub runners are UTC; Lithuania is UTC+2 (winter) / UTC+3 (summer).
-# We compute a rough local time; exact hour is enforced by the workflow guard.
 def vilnius_now():
-    # Simple DST approximation: EEST (UTC+3) late Mar–late Oct, else EET (UTC+2).
+    # Simple DST approximation: EEST (UTC+3) Apr–Sep, EET (UTC+2) otherwise.
     now_utc = datetime.now(timezone.utc)
     month = now_utc.month
-    offset = 3 if 4 <= month <= 9 else (2 if month in (1, 2, 11, 12) else 3)
-    # March/October edge handled loosely; not critical for the date label.
+    offset = 3 if 4 <= month <= 9 else 2
     return now_utc + timedelta(hours=offset)
 
 LT_WEEKDAYS = ["pirmadienis", "antradienis", "trečiadienis", "ketvirtadienis",
@@ -41,6 +43,8 @@ today = vilnius_now()
 yesterday = today - timedelta(days=1)
 TODAY_LT = lt_date(today)
 YESTERDAY_LT = lt_date(yesterday)
+EDITION_DATE = today.strftime("%Y-%m-%d")
+EDITION_MARKER = f"<!-- edition:{EDITION_DATE} -->"
 
 TEMPLATE = r"""<!DOCTYPE html>
 <html lang="lt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +61,7 @@ header.mast{text-align:center;padding:54px 0 26px;}
 h1.title{font-family:"Fraunces",serif;font-weight:600;font-size:46px;line-height:1.05;margin:0 0 14px;color:var(--rose-deep);letter-spacing:-.01em;}
 .meta{font-size:14px;color:var(--ink-soft);display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;}
 .meta .dot{color:var(--rose-soft);}
+.covers{margin-top:6px;font-size:13px;color:var(--rose-deep);font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
 .intro{font-family:"Fraunces",serif;font-size:20px;line-height:1.6;color:var(--ink);background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;box-shadow:0 12px 30px -22px rgba(177,74,110,.5);}
 .intro b{color:var(--rose-deep);font-weight:600;}
 h2.sec{font-family:"Fraunces",serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--rose-deep);display:flex;align-items:center;gap:14px;margin:48px 0 22px;}
@@ -81,7 +86,8 @@ a{color:var(--rose-deep);}
 @media(max-width:560px){h1.title{font-size:34px;}body{font-size:17px;}.intro{font-size:18px;}}
 </style></head><body><div class="wrap">
 <header class="mast"><div class="kicker">Martos rytinė apžvalga</div><h1 class="title">Labas rytas, Marta</h1>
-<div class="meta"><span>[DATA]</span><span class="dot">·</span><span>~[X] min skaitymo</span></div></header>
+<div class="meta"><span>[DATA]</span><span class="dot">·</span><span>~[X] min skaitymo</span></div>
+<div class="covers">Vakar dienos ([YDATE]) svarbiausios naujienos</div></header>
 <div class="intro">[INTRO]</div>
 [SECTIONS]
 <footer><p class="src"><b>Šaltiniai:</b> [SOURCES]</p>
@@ -89,7 +95,7 @@ a{color:var(--rose-deep);}
 </div></body></html>"""
 
 PROMPT = f"""Esi Martos asmeninės rytinės naujienų apžvalgos redaktorė. Šiandien yra {TODAY_LT}.
-Tavo užduotis – paruošti dienos laidą LIETUVIŲ KALBA, kuri apibendrina VAKARYKŠTĖS dienos ({YESTERDAY_LT}) įvykius.
+Tavo užduotis – paruošti šios dienos laidą LIETUVIŲ KALBA, kuri apibendrina VAKARYKŠTĖS dienos ({YESTERDAY_LT}) įvykius. Laida datuojama šiandienos data, tarsi rytinis laikraštis.
 
 Pirmiausia atlik web paieškas (naudok web_search įrankį, kelis kartus) ir surink konkrečius, tikrus faktus su skaičiais ir įvardytais šaltiniais šiose srityse:
 - Pasaulio svarbiausios antraštės.
@@ -99,7 +105,7 @@ Pirmiausia atlik web paieškas (naudok web_search įrankį, kelis kartus) ir sur
 - Prekybai svarbu (ekonominis kalendorius, ką stebi prekiautojai: FOMC, svarbūs duomenys, nafta, doleris).
 Pirmenybę teik šaltiniams: Reuters, AP, BBC, NPR, LRT, Euronews, Consilium, European Commission, CNBC, Trading Economics.
 
-Tada parenk vieną savarankišką index.html failą, NAUDODAMA TIKSLIAI šį šabloną. NIEKO nekeisk CSS ar struktūroje – keisk tik datas ir turinį tarp žymeklių. Pakeisk [DATA] -> "{YESTERDAY_LT}", [TODAY] -> "{TODAY_LT}", [YESTERDAY] -> "{YESTERDAY_LT}", [X] -> skaitymo trukmės įvertis, [INTRO], [SECTIONS], [SOURCES].
+Tada parenk vieną savarankišką index.html failą, NAUDODAMA TIKSLIAI šį šabloną. NIEKO nekeisk CSS ar struktūroje – keisk tik datas ir turinį tarp žymeklių. Pakeisk [DATA] -> "{TODAY_LT}", [YDATE] -> "{YESTERDAY_LT}", [TODAY] -> "{TODAY_LT}", [YESTERDAY] -> "{YESTERDAY_LT}", [X] -> skaitymo trukmės įvertis, [INTRO], [SECTIONS], [SOURCES].
 
 Privalomos sekcijos [SECTIONS] vietoje, šia tvarka:
 1. "Pasaulio antraštės" – 3–5 istorijos. Pirma istorija turi <p class="dek"> paantraštę ir <div class="why"> ("Kodėl tai svarbu") bloką.
@@ -119,6 +125,13 @@ Rašyk natūralia, taisyklinga lietuvių kalba. NEGALIMA prasimanyti faktų – 
 """
 
 def main():
+    # Idempotency: if today's edition is already published, do nothing.
+    if os.path.exists("index.html"):
+        with open("index.html", encoding="utf-8") as f:
+            if EDITION_MARKER in f.read():
+                print(f"Edition for {EDITION_DATE} already published — skipping.")
+                return
+
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         print("ERROR: ANTHROPIC_API_KEY not set", file=sys.stderr)
@@ -133,7 +146,6 @@ def main():
         messages=[{"role": "user", "content": PROMPT}],
     )
 
-    # Concatenate all text blocks from the final assistant message.
     text = "".join(
         block.text for block in resp.content if getattr(block, "type", None) == "text"
     )
@@ -144,10 +156,11 @@ def main():
         print(text[:4000], file=sys.stderr)
         sys.exit(2)
 
-    html = m.group(0)
+    # Stamp the edition marker so future runs today are skipped.
+    html = m.group(0).replace("<!DOCTYPE html>", f"<!DOCTYPE html>\n{EDITION_MARKER}", 1)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"OK: wrote index.html ({len(html)} bytes) for {YESTERDAY_LT}")
+    print(f"OK: wrote index.html ({len(html)} bytes), edition {EDITION_DATE}, covers {YESTERDAY_LT}")
 
 if __name__ == "__main__":
     main()

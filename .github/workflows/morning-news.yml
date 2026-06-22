@@ -2,12 +2,18 @@ name: Martos rytinė apžvalga
 
 on:
   schedule:
-    # GitHub cron is UTC. 05:00 UTC is ~07:00 Vilnius (winter, UTC+2) /
-    # ~08:00 Vilnius (summer, UTC+3). GitHub's scheduler is best-effort and
-    # may be delayed by hours, but there is no longer a gate: whenever this
-    # fires, the page is regenerated and published. One invocation per day.
+    # GitHub's cron is UTC and best-effort (often delayed by tens of minutes).
+    # To make sure the edition is ready before morning in Vilnius (UTC+3 in
+    # summer), we trigger several times in the early hours. The job is
+    # idempotent — index.html carries an <!-- edition:YYYY-MM-DD --> marker, so
+    # only the first run each day actually generates; later triggers skip.
+    # 01:00–05:00 UTC ≈ 04:00–08:00 Vilnius (summer) / 03:00–07:00 (winter).
+    - cron: "0 1 * * *"
+    - cron: "0 2 * * *"
+    - cron: "0 3 * * *"
+    - cron: "0 4 * * *"
     - cron: "0 5 * * *"
-  workflow_dispatch: {}   # allows manual "Run workflow" from the Actions tab
+  workflow_dispatch: {}   # manual "Run workflow" from the Actions tab
 
 permissions:
   contents: write
@@ -23,20 +29,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Skip if today's edition already published
+        id: gate
+        run: |
+          TODAY=$(TZ="Europe/Vilnius" date +%F)
+          if [ -f index.html ] && grep -q "edition:$TODAY" index.html; then
+            echo "Edition for $TODAY already published — skipping."
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
+        if: steps.gate.outputs.go == 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install dependencies
+        if: steps.gate.outputs.go == 'true'
         run: pip install "anthropic>=0.40"
 
       - name: Generate today's page
+        if: steps.gate.outputs.go == 'true'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/generate_news.py
 
       - name: Commit and push
+        if: steps.gate.outputs.go == 'true'
         run: |
           git config user.name "Morning News Bot"
           git config user.email "news@users.noreply.github.com"
