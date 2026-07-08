@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """
-Martos rytinė apžvalga — daily Lithuanian morning news generator.
+Martos rytinė apžvalga — daily Lithuanian news generator.
 Runs in GitHub Actions. Calls the Anthropic API (with the server-side web
-search tool) to research YESTERDAY's news and produce a self-contained
-index.html in the fixed soft pink & rose design, dated TODAY (so it reads
-like this morning's paper) with a clear "covers yesterday" line.
+search tool) to research TODAY's latest news and produce a self-contained
+index.html in the fixed soft pink & rose design, dated TODAY.
 
 Idempotent: the page carries an HTML marker <!-- edition:YYYY-MM-DD --> with
 today's Vilnius date. If index.html already has today's marker, the script
-exits without calling the API, so multiple early-morning cron triggers are
-safe and cheap (only the first one each day actually generates).
+exits without calling the API, so multiple early triggers are safe and cheap.
 
 Requires env var ANTHROPIC_API_KEY.
 """
@@ -23,7 +21,6 @@ import anthropic
 
 MODEL = "claude-sonnet-4-6"
 
-# --- Dates in Vilnius local time ---------------------------------------------
 def vilnius_now():
     # Simple DST approximation: EEST (UTC+3) Apr–Sep, EET (UTC+2) otherwise.
     now_utc = datetime.now(timezone.utc)
@@ -40,11 +37,9 @@ def lt_date(d):
     return f"{LT_WEEKDAYS[d.weekday()]}, {d.year} m. {LT_MONTHS[d.month-1]} {d.day} d."
 
 today = vilnius_now()
-yesterday = today - timedelta(days=1)
 TODAY_LT = lt_date(today)
-YESTERDAY_LT = lt_date(yesterday)
-EDITION_DATE = today.strftime("%Y-%m-%d")
-EDITION_MARKER = f"<!-- edition:{EDITION_DATE} -->"
+TODAY_ISO = today.strftime("%Y-%m-%d")
+EDITION_MARKER = f"<!-- edition:{TODAY_ISO} -->"
 
 TEMPLATE = r"""<!DOCTYPE html>
 <html lang="lt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,25 +82,25 @@ a{color:var(--rose-deep);}
 </style></head><body><div class="wrap">
 <header class="mast"><div class="kicker">Martos rytinė apžvalga</div><h1 class="title">Labas rytas, Marta</h1>
 <div class="meta"><span>[DATA]</span><span class="dot">·</span><span>~[X] min skaitymo</span></div>
-<div class="covers">Vakar dienos ([YDATE]) svarbiausios naujienos</div></header>
+<div class="covers">Naujausios šios dienos žinios</div></header>
 <div class="intro">[INTRO]</div>
 [SECTIONS]
 <footer><p class="src"><b>Šaltiniai:</b> [SOURCES]</p>
-<p>Parengta automatiškai · „Martos rytinė apžvalga" · [TODAY]<br>Naujienos apibendrina [YESTERDAY] įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p></footer>
+<p>Parengta automatiškai · „Martos rytinė apžvalga" · [TODAY]<br>Naujienos apima šios dienos ([TODAY]) naujausius įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p></footer>
 </div></body></html>"""
 
-PROMPT = f"""Esi Martos asmeninės rytinės naujienų apžvalgos redaktorė. Šiandien yra {TODAY_LT}.
-Tavo užduotis – paruošti šios dienos laidą LIETUVIŲ KALBA, kuri apibendrina VAKARYKŠTĖS dienos ({YESTERDAY_LT}) įvykius. Laida datuojama šiandienos data, tarsi rytinis laikraštis.
+PROMPT = f"""Esi Martos asmeninės naujienų apžvalgos redaktorė. Šiandien yra {TODAY_LT}.
+Tavo užduotis – paruošti ŠIOS DIENOS laidą LIETUVIŲ KALBA su NAUJAUSIOMIS šiandienos ({TODAY_LT}) žiniomis: šviežiausios dienos antraštės, įskaitant nakties ir ankstyvo ryto įvykius. NENAUDOK pasenusių, vakar dienos naujienų kaip pagrindinių – ieškok naujausio.
 
-Pirmiausia atlik web paieškas (naudok web_search įrankį, kelis kartus) ir surink konkrečius, tikrus faktus su skaičiais ir įvardytais šaltiniais šiose srityse:
-- Pasaulio svarbiausios antraštės.
+Pirmiausia atlik web paieškas (naudok web_search įrankį, kelis kartus) ir surink konkrečius, tikrus, ŠVIEŽIAUSIUS faktus su skaičiais ir įvardytais šaltiniais šiose srityse:
+- Pasaulio svarbiausios antraštės (naujausios šiandienos).
 - Lietuvos naujienos (tikrink LRT).
 - Europa ir ES.
-- Rinkos ir ekonomika (nafta/Brent, JAV infliacija/CPI, Fed/ECB palūkanos, akcijos, EUR/USD).
-- Prekybai svarbu (ekonominis kalendorius, ką stebi prekiautojai: FOMC, svarbūs duomenys, nafta, doleris).
-Pirmenybę teik šaltiniams: Reuters, AP, BBC, NPR, LRT, Euronews, Consilium, European Commission, CNBC, Trading Economics.
+- Rinkos ir ekonomika (nafta/Brent, JAV infliacija/CPI, Fed/ECB palūkanos, akcijos, EUR/USD – naujausi lygiai).
+- Prekybai svarbu (ekonominis kalendorius, ką stebi prekiautojai šiandien: FOMC, svarbūs duomenys, nafta, doleris).
+Pirmenybę teik šaltiniams: Reuters, AP, BBC, NPR, LRT, Euronews, CNBC, Bloomberg, Al Jazeera, Trading Economics.
 
-Tada parenk vieną savarankišką index.html failą, NAUDODAMA TIKSLIAI šį šabloną. NIEKO nekeisk CSS ar struktūroje – keisk tik datas ir turinį tarp žymeklių. Pakeisk [DATA] -> "{TODAY_LT}", [YDATE] -> "{YESTERDAY_LT}", [TODAY] -> "{TODAY_LT}", [YESTERDAY] -> "{YESTERDAY_LT}", [X] -> skaitymo trukmės įvertis, [INTRO], [SECTIONS], [SOURCES].
+Tada parenk vieną savarankišką index.html failą, NAUDODAMA TIKSLIAI šį šabloną. NIEKO nekeisk CSS ar struktūroje – keisk tik datas ir turinį tarp žymeklių. Pakeisk [DATA] -> "{TODAY_LT}", [TODAY] -> "{TODAY_LT}", [X] -> skaitymo trukmės įvertis, [INTRO], [SECTIONS], [SOURCES].
 
 Privalomos sekcijos [SECTIONS] vietoje, šia tvarka:
 1. "Pasaulio antraštės" – 3–5 istorijos. Pirma istorija turi <p class="dek"> paantraštę ir <div class="why"> ("Kodėl tai svarbu") bloką.
@@ -125,11 +120,10 @@ Rašyk natūralia, taisyklinga lietuvių kalba. NEGALIMA prasimanyti faktų – 
 """
 
 def main():
-    # Idempotency: if today's edition is already published, do nothing.
     if os.path.exists("index.html"):
         with open("index.html", encoding="utf-8") as f:
             if EDITION_MARKER in f.read():
-                print(f"Edition for {EDITION_DATE} already published — skipping.")
+                print(f"Edition for {TODAY_ISO} already published — skipping.")
                 return
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -156,11 +150,10 @@ def main():
         print(text[:4000], file=sys.stderr)
         sys.exit(2)
 
-    # Stamp the edition marker so future runs today are skipped.
     html = m.group(0).replace("<!DOCTYPE html>", f"<!DOCTYPE html>\n{EDITION_MARKER}", 1)
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"OK: wrote index.html ({len(html)} bytes), edition {EDITION_DATE}, covers {YESTERDAY_LT}")
+    print(f"OK: wrote index.html ({len(html)} bytes), edition {TODAY_ISO}")
 
 if __name__ == "__main__":
     main()
