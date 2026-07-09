@@ -1,174 +1,148 @@
 <!DOCTYPE html>
-<!-- edition:2026-07-08 -->
-<html lang="lt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- edition:2026-07-09 -->
+<html lang="lt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Martos rytinė apžvalga</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#fff5f7;--bg-card:#fffafb;--rose:#d6688a;--rose-deep:#b14a6e;
-    --rose-soft:#f7d6e0;--blush:#fce4ec;--gold:#c79a5b;--ink:#3d2b33;
-    --ink-soft:#7a5e69;--line:#f0cdd9;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:radial-gradient(1200px 600px at 50% -200px,#ffe3ec 0%,rgba(255,227,236,0) 70%),var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.7;font-size:18px;}
-  .wrap{max-width:740px;margin:0 auto;padding:0 22px 80px;}
-  header.mast{text-align:center;padding:54px 0 26px;}
-  .kicker{letter-spacing:.32em;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--rose);margin-bottom:14px;}
-  h1.title{font-family:"Fraunces",serif;font-weight:600;font-size:46px;line-height:1.05;margin:0 0 14px;color:var(--rose-deep);letter-spacing:-.01em;}
-  .meta{font-size:14px;color:var(--ink-soft);display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;}
-  .meta .dot{color:var(--rose-soft);}
-  .covers{margin-top:6px;font-size:13px;color:var(--rose-deep);font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
-  .intro{font-family:"Fraunces",serif;font-size:20px;line-height:1.6;color:var(--ink);background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;box-shadow:0 12px 30px -22px rgba(177,74,110,.5);}
-  .intro b{color:var(--rose-deep);font-weight:600;}
-  h2.sec{font-family:"Fraunces",serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--rose-deep);display:flex;align-items:center;gap:14px;margin:48px 0 22px;}
-  h2.sec::before{content:"❀";color:var(--rose);font-size:16px;}
-  h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
-  article{margin:0 0 30px;}
-  h3.head{font-family:"Fraunces",serif;font-size:25px;font-weight:600;line-height:1.22;margin:0 0 6px;color:var(--ink);}
-  .dek{font-style:italic;color:var(--rose-deep);font-size:16px;margin:0 0 12px;font-family:"Fraunces",serif;}
-  p{margin:0 0 14px;}
-  .why{background:linear-gradient(180deg,var(--blush),#fff5f8);border-left:4px solid var(--rose);border-radius:0 14px 14px 0;padding:14px 20px;margin:14px 0 4px;font-size:16px;}
-  .why .lab{display:block;font-weight:700;color:var(--rose-deep);text-transform:uppercase;letter-spacing:.12em;font-size:12px;margin-bottom:4px;}
-  ul.cards{list-style:none;padding:0;margin:0;}
-  ul.cards li{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:12px;}
-  ul.cards li b{color:var(--rose-deep);}
-  .nums{display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 22px;}
-  .num{flex:1 1 150px;background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:center;}
-  .num .v{font-family:"Fraunces",serif;font-size:24px;font-weight:600;color:var(--rose-deep);}
-  .num .l{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
-  .watch li{margin-bottom:8px;}
-  footer{margin-top:56px;text-align:center;font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:24px;}
-  footer .src{font-size:12.5px;line-height:1.6;}
-  a{color:var(--rose-deep);}
-  @media(max-width:560px){h1.title{font-size:34px;}body{font-size:17px;}.intro{font-size:18px;}}
-</style>
-</head>
-<body>
-<div class="wrap">
-
-  <header class="mast">
-    <div class="kicker">Martos rytinė apžvalga</div>
-    <h1 class="title">Labas rytas, Marta</h1>
-    <div class="meta">
-      <span>trečiadienis, 2026 m. liepos 8 d.</span>
-      <span class="dot">·</span>
-      <span>~8 min skaitymo</span>
-    </div>
-    <div class="covers">Naujausios šios dienos žinios</div>
-  </header>
-
-  <div class="intro">
-    Rytas prasidėjo sukrėtimu: <b>JAV atnaujino smūgius prieš Iraną</b> — paliaubos oficialiai žlugo po to, kai Hormūzo sąsiauryje buvo užpulti trys prekybiniai laivai. <b>Nafta pašoko beveik 6 proc.</b>, o akcijų rinkos visame pasaulyje krenta. Ukrainoje per naktinę Rusijos raketų ir dronų ataką žuvo mažiausiai 22 žmonės. Lietuvoje toliau juda istorinė Konstitucijos pataisa dėl branduolinio atgrasymo, o D. Trumpas keliauja į NATO viršūnių susitikimą Ankaroje. Štai kas svarbiausia šįryt.
-  </div>
-
-  <!-- WORLD -->
-  <h2 class="sec">Pasaulio antraštės</h2>
-
-  <article>
-    <h3 class="head">JAV atnaujino smūgius Iranui — paliaubos žlugo</h3>
-    <p class="dek">Trumpas skelbia, kad ugnies nutraukimas su Iranu baigėsi.</p>
-    <p>JAV kariuomenė šįryt pradėjo „galingų smūgių seriją" prieš Iraną — praėjus kelioms valandoms po to, kai antradienį Hormūzo sąsiauryje buvo užpulti trys prekybiniai laivai. Prezidentas Donaldas Trumpas pareiškė, kad paliaubos su Iranu baigėsi. Irano užsienio reikalų ministerija smūgius pavadino „šiurkščiu praėjusį mėnesį pasiekto memorandumo pažeidimu".</p>
-    <div class="why">
-      <span class="lab">Kodėl tai svarbu</span>
-      Hormūzo sąsiauriu plukdoma penktadalis pasaulio naftos. Paliaubų žlugimas akimirksniu pakėlė naftos kainas ir grąžino infliacijos baimę į rinkas — tai tiesiogiai veikia degalų kainas Europoje.
-    </div>
-  </article>
-
-  <article>
-    <h3 class="head">Rusijos ataka Ukrainoje: žuvo mažiausiai 22</h3>
-    <p>Rusija paleido raketų ir dronų bangas į Ukrainą; žuvo mažiausiai 22 žmonės. Ataka atskleidė oro gynybos spragas jau ketvirtus metus trunkančio plataus masto Rusijos įsiveržimo fone.</p>
-  </article>
-
-  <article>
-    <h3 class="head">Trumpas keliauja į NATO viršūnių susitikimą Ankaroje</h3>
-    <p>Prezidentas Donaldas Trumpas vyksta į kasmetinį NATO viršūnių susitikimą Ankaroje (Turkija). Pernai jis spaudė sąjungininkes daugiau skirti gynybai; šįmet siekia užtikrinti, kad tie įsipareigojimai būtų įvykdyti.</p>
-  </article>
-
-  <article>
-    <h3 class="head">Le Pen sieks Prancūzijos prezidento posto</h3>
-    <p>Kraštutinių dešiniųjų lyderė Marine Le Pen pareiškė kandidatuosianti kitų metų Prancūzijos prezidento rinkimuose — nepaisant antradienį skirtos bausmės (elektroninės apyrankės) už lėšų pasisavinimą.</p>
-  </article>
-
-  <!-- LITHUANIA -->
-  <h2 class="sec">Lietuvos rubrika</h2>
-
-  <article>
-    <h3 class="head">Juda Konstitucijos pataisa dėl branduolinio atgrasymo</h3>
-    <p class="dek">Siekiama panaikinti nuo 1992 m. galiojantį 137-ąjį straipsnį.</p>
-    <p>Prezidentas Gitanas Nausėda ir Seimo vadovai sutarė inicijuoti Konstitucijos pataisą, panaikinančią 137-ąjį straipsnį, kuris nuo 1992 m. draudžia masinio naikinimo ginklus ir užsienio karines bazes šalies teritorijoje. Apie 50 Seimo narių pataisą užregistravo liepos 3 d. Priėmimui reikės bent 94 balsų dviejuose balsavimuose, atskirtuose ne mažiau kaip trimis mėnesiais.</p>
-    <div class="why">
-      <span class="lab">Kodėl tai svarbu</span>
-      Pataisa panaikintų teisinį veto, blokuojantį būsimą NATO branduolinio atgrasymo integraciją. Tai tiesioginis atsakas į Rusijos taktinius branduolinius ginklus Baltarusijoje ir „Iskander-M" sistemas Kaliningrade.
-    </div>
-  </article>
-
-  <article>
-    <h3 class="head">Nausėda perspėja dėl NATO skilimo rizikos</h3>
-    <p>Berlyne, spaudos konferencijoje su Latvijos ir Estijos prezidentais bei Vokietijos kancleriu Friedrichu Merzu, G. Nausėda perspėjo, kad NATO gali suskilti, jei dalis šalių nepasieks 5 proc. BVP gynybos tikslo: „Bus itin prieštaringa, jei vienos šalys deda visas pastangas, o kitos lieka ties 2–2,5 proc." Lietuva šiuo metu gynybai skiria 4 proc. BVP.</p>
-  </article>
-
-  <!-- EUROPE / EU -->
-  <h2 class="sec">Europa ir ES</h2>
-
-  <article>
-    <h3 class="head">Europos biržos smuko dėl naftos šoko</h3>
-    <p>Atsinaujinus JAV ir Irano konfliktui, Europos akcijų rinkos smarkiai krito — regioninis „Stoxx 600" indeksas nusileido 1,8 proc., o visi pagrindiniai sektoriai, išskyrus naftos ir dujų, pasruvo raudonai.</p>
-  </article>
-
-  <ul class="cards">
-    <li><b>Baltijos vienybė.</b> Baltijos šalių prezidentai Berlyne su kancleriu F. Merzu aptarė gynybos finansavimą ir 5 proc. BVP tikslą.</li>
-    <li><b>Prancūzija.</b> M. Le Pen skelbia kandidatūrą, nepaisant apkaltinamojo nuosprendžio — politinė drama prieš rinkimus.</li>
-    <li><b>Energetika.</b> Naftos ir dujų akcijos – vienintelės, kylančios Europoje, rinkoms sveriant tiekimo grėsmę.</li>
-  </ul>
-
-  <!-- MARKETS -->
-  <h2 class="sec">Rinkos ir ekonomika</h2>
-
-  <div class="nums">
-    <div class="num"><div class="v">+5,9 %</div><div class="l">Brent → 78,55 $</div></div>
-    <div class="num"><div class="v">−705</div><div class="l">Dow ateities sand.</div></div>
-    <div class="num"><div class="v">−1,8 %</div><div class="l">Stoxx 600</div></div>
-  </div>
-
-  <article>
-    <h3 class="head">Nafta pašoko, akcijos krito</h3>
-    <p>Naftos kainos šoktelėjo, kai D. Trumpas paskelbė, kad paliaubos su Iranu baigėsi. „Brent" rugsėjo ateities sandoriai pakilo 5,92 proc. iki 78,55 dolerio, WTI — 5,79 proc. iki 74,50 dolerio už barelį. „S&P 500" ateities sandoriai krito 1 proc., „Dow" — 705 punktais (−1,3 proc.).</p>
-  </article>
-
-  <article>
-    <h3 class="head">Rizikos apetitas dingsta</h3>
-    <p>Investuotojai bėga iš akcijų į saugesnį turtą. Energetikos sektorius – vienintelis, kylantis, o platesnės rinkos JAV ir Europoje sruvena raudonai dėl atsinaujinusios geopolitinės įtampos.</p>
-  </article>
-
-  <!-- TRADING -->
-  <h2 class="sec">Prekybai svarbu žinoti</h2>
-
-  <article>
-    <ul class="cards watch">
-      <li><b>Hormūzas – pagrindinis variklis.</b> Kol tęsiasi smūgiai, nafta liks nestabili ir aukšta. Stebėkite žinias apie sąsiaurio laivybą.</li>
-      <li><b>Rizikos vengimas.</b> Akcijų kritimas ir bėgimas į obligacijas bei auksą gali tęstis, jei konfliktas eskaluosis.</li>
-      <li><b>Energetikos akcijos.</b> Naftos ir dujų sektorius – vienintelė žalia sala; galimas trumpalaikis kapitalo antplūdis.</li>
-      <li><b>NATO viršūnių susitikimas Ankaroje.</b> Bet kokie pareiškimai dėl gynybos ar Irano gali papildomai pajudinti rinkas.</li>
-    </ul>
-  </article>
-
-  <!-- TODAY -->
-  <h2 class="sec">Šiandien stebime</h2>
-  <article>
-    <p>Visų akys – į Hormūzo sąsiaurį ir tai, ar JAV bei Irano smūgiai eskaluosis. Rinkos sveria naftos šoką ir jo poveikį infliacijai, o Ankaroje prasideda NATO viršūnių susitikimas. Lietuvoje laukiama tolesnių žingsnių dėl Konstitucijos pataisos.</p>
-  </article>
-
-  <footer>
-    <p class="src"><b>Šaltiniai:</b> Reuters, AP, NPR, CNN, Al Jazeera, ABC News, CNBC, Bloomberg, LRT, Army Recognition, Politico, Trading Economics.</p>
-    <p>Parengta automatiškai · „Martos rytinė apžvalga" · 2026 m. liepos 8 d.<br>
-    Naujienos apima šios dienos (liepos 8 d.) naujausius įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p>
-  </footer>
-
+:root{--bg:#fff5f7;--bg-card:#fffafb;--rose:#d6688a;--rose-deep:#b14a6e;--rose-soft:#f7d6e0;--blush:#fce4ec;--gold:#c79a5b;--ink:#3d2b33;--ink-soft:#7a5e69;--line:#f0cdd9;}
+*{box-sizing:border-box;}
+body{margin:0;background:radial-gradient(1200px 600px at 50% -200px,#ffe3ec 0%,rgba(255,227,236,0) 70%),var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.7;font-size:18px;}
+.wrap{max-width:740px;margin:0 auto;padding:0 22px 80px;}
+header.mast{text-align:center;padding:54px 0 26px;}
+.kicker{letter-spacing:.32em;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--rose);margin-bottom:14px;}
+h1.title{font-family:"Fraunces",serif;font-weight:600;font-size:46px;line-height:1.05;margin:0 0 14px;color:var(--rose-deep);letter-spacing:-.01em;}
+.meta{font-size:14px;color:var(--ink-soft);display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.meta .dot{color:var(--rose-soft);}
+.covers{margin-top:6px;font-size:13px;color:var(--rose-deep);font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+.intro{font-family:"Fraunces",serif;font-size:20px;line-height:1.6;color:var(--ink);background:var(--bg-card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;box-shadow:0 12px 30px -22px rgba(177,74,110,.5);}
+.intro b{color:var(--rose-deep);font-weight:600;}
+h2.sec{font-family:"Fraunces",serif;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--rose-deep);display:flex;align-items:center;gap:14px;margin:48px 0 22px;}
+h2.sec::before{content:"\2740";color:var(--rose);font-size:16px;}
+h2.sec::after{content:"";flex:1;height:1px;background:var(--line);}
+article{margin:0 0 30px;}
+h3.head{font-family:"Fraunces",serif;font-size:25px;font-weight:600;line-height:1.22;margin:0 0 6px;color:var(--ink);}
+.dek{font-style:italic;color:var(--rose-deep);font-size:16px;margin:0 0 12px;font-family:"Fraunces",serif;}
+p{margin:0 0 14px;}
+.why{background:linear-gradient(180deg,var(--blush),#fff5f8);border-left:4px solid var(--rose);border-radius:0 14px 14px 0;padding:14px 20px;margin:14px 0 4px;font-size:16px;}
+.why .lab{display:block;font-weight:700;color:var(--rose-deep);text-transform:uppercase;letter-spacing:.12em;font-size:12px;margin-bottom:4px;}
+ul.cards{list-style:none;padding:0;margin:0;}
+ul.cards li{background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:12px;}
+ul.cards li b{color:var(--rose-deep);}
+.nums{display:flex;gap:12px;flex-wrap:wrap;margin:4px 0 22px;}
+.num{flex:1 1 150px;background:var(--bg-card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:center;}
+.num .v{font-family:"Fraunces",serif;font-size:24px;font-weight:600;color:var(--rose-deep);}
+.num .l{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+footer{margin-top:56px;text-align:center;font-size:13px;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:24px;}
+footer .src{font-size:12.5px;line-height:1.6;}
+a{color:var(--rose-deep);}
+@media(max-width:560px){h1.title{font-size:34px;}body{font-size:17px;}.intro{font-size:18px;}}
+</style></head><body><div class="wrap">
+<header class="mast"><div class="kicker">Martos rytinė apžvalga</div><h1 class="title">Labas rytas, Marta</h1>
+<div class="meta"><span>ketvirtadienis, 2026 m. liepos 9 d.</span><span class="dot">·</span><span>~7 min skaitymo</span></div>
+<div class="covers">Naujausios šios dienos žinios</div></header>
+<div class="intro">Šį rytą pasaulis stebi <b>JAV ir Irano konflikto eskalaciją</b> — naktį JAV pajėgos smogė daugiau nei 80 Irano taikinių, o Iranas atsakė smogdamas JAV kariniams objektams Bahreino, Kuveito ir Kataro regione. <b>Brent naftos kaina</b> šiandien svyruoja apie <b>78–79 dol. už barelį</b>, po trečiadienio šuolio. NATO Ankaroje patvirtino vienybę ir priėmė istorinių sprendimų — Baltijos oro policijos misija keičiama į oro gynybos misiją. Lietuvoje — svarbios dienos: pasirašyta gynybos įsigijimų koalicija ir patvirtintas planai pirkti žvalgybos orlaivius. Rinkose — atsargus optimizmas, tačiau Fed minutų signalai apie galimą palūkanų kėlimą laiko investuotojus budrius.
 </div>
-</body>
-</html>
+
+<h2 class="sec">Pasaulio antraštės</h2>
+
+<article>
+<h3 class="head">JAV ir Iranas keičiasi smūgiais — ceasefire žlunga</h3>
+<p class="dek">Naktį iš trečiadienio į ketvirtadienį JAV smogė daugiau nei 80 Irano taikinių; Iranas atsakė atakomis prieš JAV bazes Persijos įlankoje.</p>
+<p>JAV kariuomenė surengė naują smūgių bangą prieš Iraną — taikiniais tapo oro gynybos sistemos, radarai ir dešimtys mažų karo laivų. Tai atsakas į Irano atakas prieš tris naftotanklaivius Hormūzo sąsiauryje. Prezidentas Trumpas perspėjo: „Kiekvieną kartą kai jie mus puls, mes pulsime dvidešimt kartų." Iranas savo ruožtu pareiškė smogęs 85 JAV kariniams objektams Bahreino ir Kuveito teritorijoje. Hormūzo sąsiauriu teka apie penktadalis pasaulinio naftos eksporto, todėl konflikto eskalacija tiesiogiai veikia pasaulio energetikos rinkas.</p>
+<div class="why"><span class="lab">Kodėl tai svarbu</span>Hormūzo sąsiaurio uždarymas ar reikšmingas sutrikimas galėtų sukelti staigų naftos kainų šuolį ir sukelti naują infliacijos bangą visame pasaulyje — įskaitant Europą ir Lietuvą. Tai taip pat gali priversti Fed ir ECB permąstyti palūkanų politiką.</div>
+</article>
+
+<article>
+<h3 class="head">NATO viršūnių susitikimas Ankaroje: lyderiai patvirtino vienybę, Trumpas susitiko su Zelenskiu</h3>
+<p>NATO viršūnių susitikimas Ankaroje baigėsi: JAV prezidentas Donaldas Trumpas susitiko su Ukrainos prezidentu Volodymyru Zelenskiu ir pareiškė, kad JAV suteiks Ukrainai licenciją gaminti „Patriot" oro gynybos sistemas. NATO generalinis sekretorius Markas Rutte pareiškė, kad susitikime vyravo „didžiulis vienybės jausmas". Taip pat NATO patvirtino, kad Europos ir Kanados gynybos išlaidos 2026 m. išaugo 11 proc.</p>
+</article>
+
+<article>
+<h3 class="head">Marine Le Pen skelbia kandidatūrą į Prancūzijos prezidentus nepaisant apkalamos apyrankės</h3>
+<p>Prancūzijos kraštutinių dešiniųjų lyderė Marine Le Pen pareiškė, kad 2027 m. sieks prezidento posto — nepaisant to, kad apeliacinis teismas patvirtino nuosprendį ir skyrė elektroninę apyrankę už lėšų grobstymą iš Europos Parlamento. Le Pen teigia, kad teisminiai persekiojimai jos politinės veiklos nesustabdys.</p>
+</article>
+
+<article>
+<h3 class="head">Sudane — dronų smūgiai į civilius ir genocido požymiai</h3>
+<p>Nepriklausomi JT žmogaus teisių tyrėjai pranešė, kad Greitojo paramos pajėgų (RSF) veiksmai prieš civilius gyventojus El Fashere pernai spalį — masinis žudymas, grobimas ir seksualinis smurtas — atitinka genocido požymius. JT įspėja, kad Sudano dvejų metų konfliktas jau nusinešė mažiausiai 59 000 gyvybių, išstūmė daugiau nei 14 milijonų žmonių ir sukėlė sunkiausią humanitarinę krizę pasaulyje.</p>
+</article>
+
+<article>
+<h3 class="head">Pasaulio futbolo čempionatas: Egiptas protestuoja dėl teisėjavimo, Argentina žengė toliau</h3>
+<p>Egipto futbolo federacija pareiškė, kad „negali tylėti" po to, kai liepos 7 d. Atlantoje Argentinos ir Egipto 1/8 finalo mače (rezultatas 3:2 Argentinos naudai) teisėjavimas buvo, jos nuomone, šališkas. Pasaulio čempionato turnyrinis karas tęsiasi, o visuomeniniame internete plinta rasistinė dezinformacija apie rungtynes, praneša „Euronews".</p>
+</article>
+
+<h2 class="sec">Lietuvos rubrika</h2>
+
+<article>
+<h3 class="head">Lietuva prisijungė prie NATO gynybos įsigijimų koalicijos ir pirks žvalgybos orlaivius</h3>
+<p>NATO Ankaroje Lietuva su kitomis valstybėmis pasirašė ketinimų protokolą dėl gynybos pramonės ir gamybos pajėgumų stiprinimo bei daugiašalio bendradarbiavimo. Dokumente šalys įsipareigoja didinti gynybos tiekimo grandinių atsparumą, spartinti karinių pajėgumų įsigijimą ir stiprinti gynybos sistemų sąveikumą, pranešė Krašto apsaugos ministerija. Be to, Lietuva kartu su dešimčia NATO sąjungininkių — Belgija, Danija, Vokietija, Norvegija, Rumunija, Švedija, Kanada, Latvija ir kitomis — prisijungė prie projekto pirkti iki dešimties „Saab GlobalEye" žvalgybos orlaivių. Bendra projekto vertė sieks apie 5 mlrd. eurų, o pirmuosius orlaivius Aljansas tikisi gauti 2030–2031 metais.</p>
+<div class="why"><span class="lab">Kodėl tai svarbu</span>„GlobalEye" sistema gali aptikti dronų spiečius, balistines ir sparnuotąsias raketas bei stebėti oro erdvę, jūrų ir sausumos situaciją. Praėjusiais metais apie 20 proc. AWACS darbo buvo skirta Baltijos regiono stebėjimui — šis projektas tiesiogiai stiprins Lietuvos saugumą.</div>
+</article>
+
+<article>
+<h3 class="head">NATO oro policijos misija Baltijos šalyse keičiama į oro gynybos misiją</h3>
+<p>Lietuvos prezidentas Gitanas Nausėda Ankaroje patvirtino, kad NATO oro policijos misija Baltijos šalyse bus perkvalifikuota į oro gynybos misiją. Anot prezidento, tai „esmingai pagerins Lietuvos oro gynybos pajėgumus" ir, susiduriant su hibridiniais iššūkiais bei dronų atakomis, sąjungininkų pajėgos galės prisiimti platesnį mandatą.</p>
+</article>
+
+<article>
+<h3 class="head">Sinkevičiaus vyriausybė: vidaus reikalų ministro klausimas</h3>
+<p>Paskirtasis premjeras Mindaugas Sinkevičius viešojoje erdvėje gynė į vidaus reikalų ministrus siūlomą socialdemokratą Martyną Katelyną, pabrėždamas šio patirtį regionų politikos ir migracijos srityse. Kandidatūra sulaukė kritikos dėl 31-erių parlamentaro patirties stokos, o „laisviečiams" prie Prezidentūros surengus protestą, debatai tęsiasi.</p>
+</article>
+
+<h2 class="sec">Europa ir ES</h2>
+
+<article>
+<h3 class="head">Europos Parlamentas patvirtino greitesnius leidimus elektros tinklams ir atsinaujinantiems ištekliams</h3>
+<p>Europos Parlamentas priėmė pasiūlymą, kuris leis greičiau išduoti leidimus elektros tinklų ir atsinaujinančiųjų energijos išteklių projektams — tai turėtų padėti mažinti energijos kainas didinant vietos švarios energijos tiekimą. Tai ypač aktualu dabar, kai Irano konfliktas vėl kelia grėsmę energijos tiekimui. Briuselis taip pat svarsto galimybę įvesti prekybos draudimą su Izraelio gyvenvietėmis okupuotose palestiniečių teritorijose, praneša „Euronews".</p>
+</article>
+
+<ul class="cards">
+<li><b>Airija perėmė ES Tarybos pirmininkavimą</b> nuo 2026 m. liepos 1 d. ir artimiausius šešis mėnesius vadovaus Tarybos darbui. EP prezidentė Metsola jau susitiko su Airijos lyderiais dėl bendradarbiavimo prioritetų.</li>
+<li><b>ES įvedė 3 eurų muitus mažavertėms siuntoms</b> iš ne ES šalių (iki 150 eurų vertės), pirmiausia iš e. prekybos platformų — nuo 2026 m. liepos 1 d. Tikslas — apsaugoti vartotojus ir užtikrinti sąžiningą konkurenciją.</li>
+<li><b>Nauji ES automobilių saugos reikalavimai</b> įsigaliojo liepos 7 d.: visi naujai registruojami automobiliai ir furgonai privalo atitikti aukštesnius saugos standartus pagal Bendrąjį saugos reglamentą.</li>
+<li><b>Rusija uždraudė dyzelino eksportą</b> dėl kuro trūkumo, kurį sukėlė dronų atakos prieš naftos perdirbimo infrastruktūrą, praneša „Euronews". Tai gali paveikti dyzelino kainas Europoje.</li>
+</ul>
+
+<h2 class="sec">Rinkos ir ekonomika</h2>
+
+<div class="nums">
+<div class="num"><div class="v">4,2 %</div><div class="l">JAV infliacija (CPI, gegužė 2026, m/m)</div></div>
+<div class="num"><div class="v">~78,59 $</div><div class="l">Brent nafta (už barelį, liepos 9)</div></div>
+<div class="num"><div class="v">3,50–3,75 %</div><div class="l">Fed bazinė norma (birželio 17 sprendimas)</div></div>
+</div>
+
+<article>
+<h3 class="head">Naftos kainos svyruoja dėl JAV–Irano įtampos</h3>
+<p>Brent naftos ateities sandorių kaina šiandien svyruoja 76,77–79,54 dol. už barelį diapazone — po to, kai trečiadienį šoktelėjo daugiau nei 5 proc. po Trumpo pareiškimų ir naujų smūgių. „Reuters" praneša, kad akcijų ir obligacijų rinkos bei naftos kainos stabilizavosi po savaitės audringo laikotarpio. „Goldman Sachs" analitikai svarsto du scenarijus: jei derybos pasistūmės į priekį, srautai gali normalizuotis iki liepos pabaigos; jei konfliktas gilės — galimas didesnis tiekimo sutrikimas.</p>
+</article>
+
+<article>
+<h3 class="head">Fed minutai: palūkanų kėlimas šiemet — realus scenarijus</h3>
+<p>Birželio FOMC posėdžio minutai atskleidė, kad keli Fed pareigūnai pasisakė už galimą palūkanų normos kėlimą dėl aukštesnių bazinės infliacijos rodiklių ir tvirtos darbo rinkos. JAV infliacija (CPI) gegužę siekė 4,2 proc. (metinis rodiklis) — didžiausia reikšmė nuo 2023 m. balandžio. Fed palūkanos šiuo metu laikomos 3,50–3,75 proc. diapazone (birželio 17 d. sprendimas). Tikimybė, kad palūkanos bus pakeltos iki rugsėjo, šiandien išaugo iki apie 70–87 proc., praneša rinkų analitikai.</p>
+</article>
+
+<article>
+<h3 class="head">Akcijų rinkos: atsargus atsigavimas po pardavimų</h3>
+<p>JAV akcijų ateities sandoriai šiandien ryte rodo atsargų augimą: „Dow Jones" ateities sandoriai — +0,1 proc., S&amp;P 500 — +0,3 proc., „Nasdaq 100" — +0,8 proc. Europoje Vokietijos DAX kilo apie 41 punktu iki 24 939, tuo tarpu Londono FTSE 100 smuko. EUR/USD šiandien ryte — apie 1,1435–1,1450. 10 metų JAV iždo obligacijų pajamingumas pakilo iki 4,56 proc.</p>
+</article>
+
+<h2 class="sec">Prekybai svarbu žinoti</h2>
+
+<ul class="cards watch">
+<li><b>Hormūzo sąsiauris — pagrindinis rizikos veiksnys:</b> Bet koks naujas incidentas ar derybų lūžis gali momentaliai judinti Brent naftos, dolerio ir aukso kainas. Per sąsiaurį teka apie 1/5 pasaulinio naftos ir SGD eksporto.</li>
+<li><b>Fed kalbos ir JAV savaitiniai bedarbystės duomenys:</b> Šiandien kalba Fed atstovai Williamsas ir Loganas. Investuotojai ieško signalų apie galimą rugsėjo palūkanų kėlimą — rinkos tikimybė jau apie 70–87 proc.</li>
+<li><b>EUR/USD ~1,1435 ir dolerio indeksas ~100,91:</b> Doleris šiek tiek susilpnėjo po naftos smukimo; euro pozicija stabili. Stebėkite, kaip Fed retorikos pokyčiai veikia valiutų kursus.</li>
+<li><b>SK Hynix JAV biržos debiutas:</b> Pietų Korėjos lustų gamybos giganto SK Hynix ateities sandorių JAV biržoje paklausa viršijo pasiūlą septynis kartus. Debiutas gali duoti toną puslaidininkių sektoriaus akcijoms visame pasaulyje.</li>
+</ul>
+
+<h2 class="sec">Šiandien stebime</h2>
+
+<article>
+<p>Visa diena bus pažymėta dviem ašimis: <b>geopolitine</b> — ar JAV ir Iranas ras kelią atgal prie derybų stalo, ar konfliktas gilės ir nušluos lauktas energijos kainų nuolaidas; ir <b>monetarine</b> — ar Fed atstovų kalbos bei savaitiniai bedarbystės duomenys patvirtins rinkos lūkesčius dėl galimo palūkanų kėlimo rugsėjį. Lietuvai svarbu stebėti NATO Ankaros sprendimų įgyvendinimą ir gynybos biudžeto diskusijas, kurios artėjančiais mėnesiais taps aktualesnės nei bet kada.</p>
+</article>
+
+<footer><p class="src"><b>Šaltiniai:</b> NPR (npr.org), WORLD News Podcast, Reuters (investing.com/reuters), Bloomberg (bloomberg.com), Trading Economics (tradingeconomics.com), Investing.com, Euronews (euronews.com), European Union official news (european-union.europa.eu), European Parliament press room (europarl.europa.eu), LRT (lrt.lt), Respublika.lt, US Bank Asset Management / Federal Reserve (federalreserve.gov), Michigan HFA Economic Snapshot (house.mi.gov), GoMarkets analysis, Investrade Morning Preview, Rio Times Global Economy Briefing, Yahoo Finance, AllAfrica.</p>
+<p>Parengta automatiškai · „Martos rytinė apžvalga" · ketvirtadienis, 2026 m. liepos 9 d.<br>Naujienos apima šios dienos (ketvirtadienis, 2026 m. liepos 9 d.) naujausius įvykius. Šaltinius patartina patikrinti, jei žinia naudojama svarbiems sprendimams.</p></footer>
+</div></body></html>
